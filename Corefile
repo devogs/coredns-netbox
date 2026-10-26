@@ -1,0 +1,19 @@
+# Default Corefile, configured through environment variables (see README.md).
+# Replace it by mounting your own file on /etc/coredns/Corefile.
+.:53 {
+    errors
+    log
+
+    # Records come from the "dns_name" of the NetBox IP addresses.
+    netbox {$NETBOX_ZONES} {
+        url {$NETBOX_URL}/api/ipam/ip-addresses
+        token {$NETBOX_TOKEN}
+        ttl {$NETBOX_TTL}
+        timeout {$NETBOX_TIMEOUT}
+        # Names unknown to NetBox go to the upstream resolvers below.
+        fallthrough
+    }
+
+    cache {$DNS_CACHE_TTL}
+    forward . {$DNS_UPSTREAM}
+}

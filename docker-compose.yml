@@ -1,0 +1,9 @@
+services:
+  coredns:
+    image: ${COREDNS_IMAGE:-devogs/coredns-netbox:latest}
+    container_name: coredns-netbox
+    env_file: .env
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    restart: unless-stopped
