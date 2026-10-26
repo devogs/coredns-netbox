@@ -1,0 +1,12 @@
+services:
+  coredns:
+    image: matt13290/coredns-netbox:latest
+    container_name: coredns-netbox
+    env_file: .env
+    ports:
+      # Bound to explicit addresses only: never publish a resolver on the public IP
+      - "127.0.0.1:53:53/udp"
+      - "127.0.0.1:53:53/tcp"
+      - "10.255.255.1:53:53/udp"
+      - "10.255.255.1:53:53/tcp"
+    restart: unless-stopped
