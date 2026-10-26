@@ -1,6 +1,6 @@
 # Default Corefile, configured through environment variables (see README.md).
 # Replace it by mounting your own file on /etc/coredns/Corefile.
-.:53 {
+{$NETBOX_ZONES} {
     errors
     log
 
@@ -14,6 +14,13 @@
         fallthrough
     }
 
+    cache {$DNS_CACHE_TTL}
+    forward . {$DNS_UPSTREAM}
+}
+
+. {
+    errors
+    log
     cache {$DNS_CACHE_TTL}
     forward . {$DNS_UPSTREAM}
 }
