@@ -2,7 +2,8 @@
 
 ARG GO_VERSION=1.26
 ARG COREDNS_VERSION=v1.15.0
-ARG NETBOX_PLUGIN_VERSION=latest
+# Plugin commit (master, 0.5.0): the latest tag (v0.4.0) does not fall through when NetBox has no record
+ARG NETBOX_PLUGIN_VERSION=81715e2
 
 # --- Build stage: CoreDNS compiled with the NetBox external plugin ---
 FROM golang:${GO_VERSION} AS build

@@ -92,7 +92,7 @@ The default [Corefile](Corefile) is a good starting point. The `netbox` plugin o
 
 ```bash
 docker build -t coredns-netbox .
-docker build --build-arg COREDNS_VERSION=v1.15.0 --build-arg NETBOX_PLUGIN_VERSION=latest -t coredns-netbox .
+docker build --build-arg COREDNS_VERSION=v1.15.0 --build-arg NETBOX_PLUGIN_VERSION=81715e2 -t coredns-netbox .
 ```
 
 CoreDNS has no dynamic plugins, so the image compiles CoreDNS with
